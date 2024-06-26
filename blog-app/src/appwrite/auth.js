@@ -28,7 +28,7 @@ class AuthService{
             console.log("Error while login ::",error);
         }
     }
-    async get(){
+    async getCurrentUser(){
         try {
             return await this.account.get();
         } catch (error) {
