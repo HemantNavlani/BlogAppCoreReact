@@ -14,13 +14,13 @@ function App() {
       else dispatch(logout())
     })
     .finally(()=>setIsLoading(false))
-  },[])
+  },)
   return !loading ? (
     <div className='min-h-screen flex flex-wrap text-center items-center bg-gray-400'>
       <div className='w-full block'>
         <Header />
         <main>
-        TODO:  <Outlet />
+        <Outlet />
         </main>
         <Footer />
       </div>
