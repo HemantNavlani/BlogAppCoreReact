@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import dataService from '../appwrite/config';
 import parse from 'html-react-parser'
+import { Button, Container } from '../components';
 function Post() {
     const [post,setPost] = useState(null);
     const slug = useParams()
@@ -21,7 +22,7 @@ function Post() {
     },[slug,navigate])
 
 
-    const deletePost(()=>{
+    const deletePost = (()=>{
         dataService.deletePost(post.$id).then(status=>{
             if (status) {
                 dataService.deleteFile(post.image)

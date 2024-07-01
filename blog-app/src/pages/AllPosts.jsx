@@ -18,6 +18,13 @@ function AllPosts() {
                         <PostCard {...post}/>
                     </div>
                 })}
+                {
+                    posts.length===0 &&(   <div className="p-2 w-full">
+                        <h1 className="text-2xl font-bold hover:text-gray-500">
+                            No Posts Yet
+                        </h1>
+                    </div>)
+                }
             </div>
         </Container>
     </div>

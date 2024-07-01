@@ -25,9 +25,9 @@ const router = createBrowserRouter([
       {
         path:'/login',
         element:(
-          <AuthLayout authentication={false}>
+          // <AuthLayout authentication={false}>
             <Login/>
-          </AuthLayout>
+          // </AuthLayout>
         )
       },
       {
@@ -73,9 +73,9 @@ const router = createBrowserRouter([
   }
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router}/>
     </Provider>
-  </React.StrictMode>,
+  // {/* </React.StrictMode>, */}
 )
