@@ -8,7 +8,7 @@ function Post() {
     const [post,setPost] = useState(null);
     const slug = useParams()
     const navigate = useNavigate()
-    const userData = useSelector((state)=>state.auth.userData)
+    const userData = useSelector((state)=>state.authSlice.userData)
 
     const isAuthor = post && userData ? userData.$id ===post.userId : false;
 
@@ -42,7 +42,7 @@ function Post() {
 
                 {isAuthor &&(
                     <div className='absolute right-6 top-6'>
-                        <Link to={`edit-post/${post.$id}`}>
+                        <Link to={`/edit-post/${post.$id}`}>
                             <Button bgColor="bg-green-500" className='mr-3'>
                                 Edit
                             </Button>

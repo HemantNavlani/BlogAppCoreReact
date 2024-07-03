@@ -58,7 +58,7 @@ class DataService{
             return false;
         }
     }
-    async getPost(slug){
+    async getPost({slug}){
         try {
             return await this.databases.getDocument(
                 conf.appwriteDatabaseId,
@@ -86,7 +86,7 @@ class DataService{
 
     async uploadFile(file){
         try {
-            await this.storage.createFile(
+            return await this.storage.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),
                 file
@@ -107,7 +107,7 @@ class DataService{
             console.log("Error while deleting file::",error);
         }
     }
-    async getFilePreview(fileId){
+    getFilePreview(fileId){
         return this.storage.getFilePreview(
             conf.appwriteBucketId,
             fileId

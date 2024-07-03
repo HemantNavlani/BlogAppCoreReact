@@ -18,7 +18,7 @@ function PostForm({post}) {
         }
     });
     const navigate = useNavigate()
-    const userData = useSelector(state=>state.auth.userData)
+    const userData = useSelector(state=>state.authSlice.userData)
 
 
     const submit = async(data)=>{
@@ -36,7 +36,7 @@ function PostForm({post}) {
             if (file){
                 const fileId = file.$id
                 data.image = fileId
-                const dbPost = dataService.createPost({
+                const dbPost = await dataService.createPost({
                     ...data,
                     userId:userData.$id
                 })
@@ -53,7 +53,7 @@ function PostForm({post}) {
                 .replace(/[^a-zA-Z\d\s]+/g, "-")
                 .replace(/\s/g, "-");
         return "";
-    })
+    },[])
 
     useEffect(()=>{
         const subscription = watch((value,{name})=>{
@@ -81,8 +81,13 @@ function PostForm({post}) {
                 setValue("slug",slugTransform(e.target.value),{shouldValidate:true})
             }}
             />
-
-            <RTE label="Content :" name = "content" control={control} defaultValue={getValues('content')}/>
+            <RTE 
+            label="Content :" 
+            name = "content"
+            control={control} 
+            defaultValue={getValues('content')}
+            // {...register('content')}
+            />
         </div>
 
         <div className='w-1/3 px-2'>
